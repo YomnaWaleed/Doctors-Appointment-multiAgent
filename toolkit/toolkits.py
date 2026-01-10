@@ -25,7 +25,7 @@ def check_availability_by_doctor(
     The parameters should be mentioned by the user in the query
     """
 
-    df = pd.read_csv(r"doctor_availability.csv")
+    df = pd.read_csv(r"../data/doctor_availability.csv")
     # print(df)
 
     df["date_slot_time"] = df["date_slot"].apply(lambda imput: input.split(" ")[-1])
@@ -66,7 +66,7 @@ def check_availability_by_specialization(
     Checking the database if we have availability for the specific specialization.
     The parameters should be mentioned by the user in the query
     """
-    df = pd.read_csv(r"doctor_availability.csv")
+    df = pd.read_csv(r"../data/doctor_availability.csv")
     df["date_slot_time"] = df["date_slot"].apply(lambda input: input.split(" ")[-1])
     rows = (
         df[
@@ -132,7 +132,7 @@ def set_appointment(
     Set appointment or slot with the doctor.
     The parameters MUST be mentioned by the user in the query.
     """
-    df = pd.read_csv(r"doctor_availability.csv")
+    df = pd.read_csv(r"../data/doctor_availability.csv")
 
     from datetime import datetime
 
@@ -184,7 +184,7 @@ def cancel_appointment(
     Canceling an appointment.
     The parameters MUST be mentioned by the user in the query.
     """
-    df = pd.read_csv(r"doctor_availability.csv")
+    df = pd.read_csv(r"../data/doctor_availability.csv")
     case_to_remove = df[
         (df["date_slot"] == date.date)
         & (df["patient_to_attend"] == id_number.id)
@@ -227,7 +227,7 @@ def reschedule_appointment(
     The parameters MUST be mentioned by the user in the query.
     """
     # Dummy data
-    df = pd.read_csv(r"doctor_availability.csv")
+    df = pd.read_csv(r"../data/doctor_availability.csv")
     available_for_desired_date = df[
         (df["date_slot"] == new_date.date)
         & (df["is_available"] == True)
